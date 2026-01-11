@@ -8,8 +8,9 @@ SCREENSHOTS_DIR=~/Desktop/Screenshots
 # --- Functions ---
 
 usage() {
-  echo "Usage: $0 [-s] [-d] [-c] [-l] [-b] [-f] [-h]"
-  echo "  -s: Move screenshots to $SCREENSHOTS_DIR instead of deleting."
+  echo "Usage: $0 [-s] [-x] [-d] [-c] [-l] [-b] [-f] [-h]"
+  echo "  -s: Move screenshots to $SCREENSHOTS_DIR."
+  echo "  -x: Delete screenshots from the Desktop."
   echo "  -d: Delete all files from the Downloads folder."
   echo "  -c: Clear system and application caches."
   echo "  -l: Delete old log files."
@@ -116,10 +117,13 @@ if [[ $# -eq 0 ]] ; then
     exit 0
 fi
 
-while getopts "sdclbfh" opt; do
+while getopts "sxdclbfh" opt; do
   case $opt in
     s)
       move_screenshots
+      ;;
+    x)
+      delete_screenshots
       ;;
     d)
       delete_downloads
@@ -144,11 +148,5 @@ while getopts "sdclbfh" opt; do
       ;;
   esac
 done
-
-# Default action for screenshots if -s is not provided
-if ! [[ "$@" =~ "-s" ]]; then
-    delete_screenshots
-fi
-
 
 echo "Tidy up complete!"
