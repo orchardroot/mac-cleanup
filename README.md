@@ -1,9 +1,6 @@
 # Mac Cleanup Script
-
 A simple script to tidy up unneeded files on a Mac.
-
 ## Features
-
 -   **Screenshot Management:**
     -   Move screenshots older than a specified number of days (default: 1 day) from the Desktop to a `Screenshots` folder.
     -   Delete screenshots older than a specified number of days (default: 1 day) from the Desktop.
@@ -17,15 +14,11 @@ A simple script to tidy up unneeded files on a Mac.
 -   **Interactive Mode:** Asks for confirmation before each action.
 -   **Dry Run Mode:** Shows what the script *would* do without actually making any changes.
 -   **Error Handling:** Includes checks for existing directories/files to prevent failures.
-
 ## Usage
-
 ```bash
 ./tidy_mac.sh [options]
 ```
-
 ### Options
-
 -   `-s [days]`: **Move screenshots**. Move screenshots older than `days` (default: 1) to `~/Desktop/Screenshots`.
 -   `-x [days]`: **Delete screenshots**. Delete screenshots older than `days` (default: 1) from the Desktop.
 -   `-d`: **Delete Downloads**. Delete all files from your `Downloads` folder.
@@ -37,10 +30,9 @@ A simple script to tidy up unneeded files on a Mac.
 -   `-a`: **Run All**. Executes `-d -c -l -b -f -t` (all cleanup tasks *except* screenshot actions).
 -   `-i`: **Interactive Mode**. Asks for confirmation before each action.
 -   `-n`: **Dry Run Mode**. Shows what would be done without actually performing actions.
+-   `-v`: **Verbose Mode**. Shows detailed output of files being processed.
 -   `-h`: **Help**. Display this help message.
-
 ### Examples
-
 -   To run all cleanup tasks in interactive mode:
     ```bash
     ./tidy_mac.sh -a -i
@@ -61,16 +53,14 @@ A simple script to tidy up unneeded files on a Mac.
     ```bash
     ./tidy_mac.sh -h
     ```
-
 ## Important Notes
-
 -   If you run the script without any options, it will display the help message.
 -   The script will ask for your password (`sudo`) for some actions (e.g., clearing system caches, deleting system logs, flushing DNS cache) as these require administrator privileges.
 -   The script includes robust error handling; it will not fail if a file or directory doesn't exist (e.g., if a browser is not installed, it will simply skip clearing its history).
 -   Screenshot actions (`-s` and `-x`) are *not* included in the `-a` (run all) option. You must explicitly choose to move or delete screenshots.
 -   When using dry run mode (`-n`), no actual files will be deleted, moved, or changed. The script will only report what it *would* do.
 -   When using interactive mode (`-i`), the script will pause and ask for your confirmation before executing each major step.
-
+-   All actions are logged to `~/.tidy_mac.log`.
+-   The script will skip clearing browser history if the browser is currently running to prevent database corruption.
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
