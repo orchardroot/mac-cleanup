@@ -63,4 +63,5 @@ A simple script to tidy up unneeded files on a Mac.
 -   All actions are logged to `~/.tidy_mac.log`.
 -   The script will skip clearing browser history if the browser is currently running to prevent database corruption.
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+Built by Orchardroot
